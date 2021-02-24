@@ -9,6 +9,8 @@ require("./mongooseClient");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const passport = require("passport");
 
 //routes
 const userRoutes = require("./routes/users");
@@ -17,6 +19,8 @@ var app = express();
 
 //middleware
 app.use(bodyParser.json());
+app.use(cors());
+app.use(passport.initialize());
 app.use("/api/users", userRoutes);
 
 //error

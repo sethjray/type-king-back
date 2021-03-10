@@ -3,6 +3,8 @@
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
+const { statisticsSchema } = require('./statistics.model')
+
 mongoose.set('useCreateIndex', true)
 
 var UserSchema = new mongoose.Schema({
@@ -19,11 +21,8 @@ var UserSchema = new mongoose.Schema({
 		}
     },
     password: { type: String, required: [true, 'password is required'] },
-    statistics: [{ type: mongoose.Types.ObjectId, ref: 'Statistics' }],
-    created: {
-        type: Date,
-        required: [true, 'account creation date is required']
-    }
+	skillQuestion: { type: String, required: [true, 'skill level is required'] },
+    statistics: { type: statisticsSchema}
 })
 
 UserSchema.statics.generateJwt = (user) => {

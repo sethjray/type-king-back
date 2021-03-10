@@ -31,9 +31,17 @@ var exercisesSchema = new mongoose.Schema({
         exercise10: { type: exerciseSchema }
 })
 
+var achievementSchema = new mongoose.Schema({
+    allTheWords: { type: Boolean, default: false },
+    tripleDigitClub: { type: Boolean, default: false },
+    aPlusAccuracy: { type: Boolean, default: false },
+    bestFriendsForever: { type: Boolean, default: false }
+})
+
 var statisticsSchema = new mongoose.Schema({
     globalStats: { type: globalSchema },
-    exerciseStats: { type: exercisesSchema }
+    exerciseStats: { type: exercisesSchema },
+    achievements: { type: achievementSchema }
 })
 
 module.exports.statisticsSchema = statisticsSchema;

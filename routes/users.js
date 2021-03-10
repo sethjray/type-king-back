@@ -40,7 +40,8 @@ router.post('/', (req, res) => {
                   exercise8: {},
                   exercise9: {},
                   exercise10: {}
-                }
+                },
+                achievements: {}
               })
             })
 

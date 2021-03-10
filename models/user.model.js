@@ -27,18 +27,19 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.statics.generateJwt = (user) => {
 	if (process.env.NODE_ENV !== 'test') {
-		return jwt.sign(
-			{
-				id: user._id,
-				name: user.name,
-				email: user.email,
-				created: user.created,
-			},
-			process.env.JWT_KEY,
-			{
-				expiresIn: process.env.JWT_EXP,
-			}
-		)
+		return user
+		// return jwt.sign(
+		// 	{
+		// 		id: user._id,
+		// 		name: user.name,
+		// 		email: user.email,
+		// 		created: user.created,
+		// 	},
+		// 	process.env.JWT_KEY,
+		// 	{
+		// 		expiresIn: process.env.JWT_EXP,
+		// 	}
+		// )
 	} else {
 		return
 	}

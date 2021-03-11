@@ -22,7 +22,8 @@ var UserSchema = new mongoose.Schema({
     },
     password: { type: String, required: [true, 'password is required'] },
 	skillQuestion: { type: String, required: [true, 'skill level is required'] },
-    statistics: { type: statisticsSchema}
+    statistics: { type: statisticsSchema},
+	friends: [{ type: mongoose.Types.ObjectId, ref: 'User' }]
 })
 
 UserSchema.statics.generateJwt = (user) => {

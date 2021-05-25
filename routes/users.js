@@ -159,7 +159,7 @@ router.post('/:userid/friends/:friendid', (req, res) => {
   User.findByIdAndUpdate(
     req.params.userid,
     {
-      $push: { friends: req.params.friendid }
+      $push: { "friends": req.params.friendid }
     },
     (err, user) => {
       console.log(user.friends)
@@ -181,7 +181,7 @@ router.post('/:userid/friends/:friendid', (req, res) => {
   User.findOne({email: req.body.email}, (err, friend) =>{
     if(!err && friend != null) {
       User.findOneAndUpdate(
-        req.params.userid,
+        {_id: req.params.userid}, 
         {
           $push: { friends: friend._id }
         },
